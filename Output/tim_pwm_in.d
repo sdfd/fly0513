@@ -1,0 +1,33 @@
+..\output\tim_pwm_in.o: ..\BSP\Tim_PWM_In.c
+..\output\tim_pwm_in.o: ..\BSP\Tim_PWM_In.h
+..\output\tim_pwm_in.o: ..\CMSIS\stm32f10x.h
+..\output\tim_pwm_in.o: ..\CMSIS\core_cm3.h
+..\output\tim_pwm_in.o: E:\Program files\keil-arm\ARM\ARMCC\bin\..\include\stdint.h
+..\output\tim_pwm_in.o: ..\CMSIS\system_stm32f10x.h
+..\output\tim_pwm_in.o: ..\User\stm32f10x_conf.h
+..\output\tim_pwm_in.o: ..\Lib\inc\stm32f10x_adc.h
+..\output\tim_pwm_in.o: ..\CMSIS\stm32f10x.h
+..\output\tim_pwm_in.o: ..\Lib\inc\stm32f10x_dma.h
+..\output\tim_pwm_in.o: ..\Lib\inc\stm32f10x_gpio.h
+..\output\tim_pwm_in.o: ..\Lib\inc\stm32f10x_i2c.h
+..\output\tim_pwm_in.o: ..\Lib\inc\stm32f10x_rcc.h
+..\output\tim_pwm_in.o: ..\Lib\inc\stm32f10x_spi.h
+..\output\tim_pwm_in.o: ..\Lib\inc\stm32f10x_tim.h
+..\output\tim_pwm_in.o: ..\Lib\inc\stm32f10x_usart.h
+..\output\tim_pwm_in.o: ..\Lib\inc\misc.h
+..\output\tim_pwm_in.o: ..\User\main.h
+..\output\tim_pwm_in.o: ..\BSP\USART1.h
+..\output\tim_pwm_in.o: E:\Program files\keil-arm\ARM\ARMCC\bin\..\include\stdio.h
+..\output\tim_pwm_in.o: ..\BSP\SPI1.h
+..\output\tim_pwm_in.o: ..\BSP\Led.h
+..\output\tim_pwm_in.o: ..\BSP\Time.h
+..\output\tim_pwm_in.o: ..\User\main.h
+..\output\tim_pwm_in.o: ..\BSP\Motor.h
+..\output\tim_pwm_in.o: ..\BSP\NRF24L.h
+..\output\tim_pwm_in.o: ..\BSP\ADC.h
+..\output\tim_pwm_in.o: ..\User\IMU.h
+..\output\tim_pwm_in.o: ..\BSP\Tim3.h
+..\output\tim_pwm_in.o: ..\User\Data_Transfer.h
+..\output\tim_pwm_in.o: ..\BSP\Tim_PWM_In.h
+..\output\tim_pwm_in.o: ..\User\Rc.h
+..\output\tim_pwm_in.o: ..\User\Control.h

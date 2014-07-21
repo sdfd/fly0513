@@ -1,0 +1,32 @@
+..\output\main.o: ..\User\main.c
+..\output\main.o: ..\User\main.h
+..\output\main.o: ..\CMSIS\stm32f10x.h
+..\output\main.o: ..\CMSIS\core_cm3.h
+..\output\main.o: E:\Program files\keil-arm\ARM\ARMCC\bin\..\include\stdint.h
+..\output\main.o: ..\CMSIS\system_stm32f10x.h
+..\output\main.o: ..\User\stm32f10x_conf.h
+..\output\main.o: ..\Lib\inc\stm32f10x_adc.h
+..\output\main.o: ..\CMSIS\stm32f10x.h
+..\output\main.o: ..\Lib\inc\stm32f10x_dma.h
+..\output\main.o: ..\Lib\inc\stm32f10x_gpio.h
+..\output\main.o: ..\Lib\inc\stm32f10x_i2c.h
+..\output\main.o: ..\Lib\inc\stm32f10x_rcc.h
+..\output\main.o: ..\Lib\inc\stm32f10x_spi.h
+..\output\main.o: ..\Lib\inc\stm32f10x_tim.h
+..\output\main.o: ..\Lib\inc\stm32f10x_usart.h
+..\output\main.o: ..\Lib\inc\misc.h
+..\output\main.o: ..\BSP\USART1.h
+..\output\main.o: E:\Program files\keil-arm\ARM\ARMCC\bin\..\include\stdio.h
+..\output\main.o: ..\BSP\SPI1.h
+..\output\main.o: ..\BSP\Led.h
+..\output\main.o: ..\BSP\Time.h
+..\output\main.o: ..\User\main.h
+..\output\main.o: ..\BSP\Motor.h
+..\output\main.o: ..\BSP\NRF24L.h
+..\output\main.o: ..\BSP\ADC.h
+..\output\main.o: ..\User\IMU.h
+..\output\main.o: ..\BSP\Tim3.h
+..\output\main.o: ..\User\Data_Transfer.h
+..\output\main.o: ..\BSP\Tim_PWM_In.h
+..\output\main.o: ..\User\Rc.h
+..\output\main.o: ..\User\Control.h
