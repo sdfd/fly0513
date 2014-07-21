@@ -52,7 +52,7 @@ void Tim_Pwm_In_Init()
 	TIM_TimeBaseInitStructure.TIM_ClockDivision = TIM_CKD_DIV1;
 	TIM_TimeBaseInitStructure.TIM_CounterMode = TIM_CounterMode_Up;
 	TIM_TimeBaseInitStructure.TIM_Period = 0xffff;
-	TIM_TimeBaseInitStructure.TIM_Prescaler = 36;
+	TIM_TimeBaseInitStructure.TIM_Prescaler = 71;
 
 	TIM_TimeBaseInit(TIM4,&TIM_TimeBaseInitStructure);
 	

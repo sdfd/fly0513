@@ -47,7 +47,26 @@ void Nrf_Check_Event(void)
 }
 void Data_Receive_Anl(u8 *data_buf,u8 num)
 {
+	vs16 rc_value_temp;
+	u8 sum = 0;
 	
+	for(u8 i=0;i<(num-1);i++)
+		sum += *(data_buf+i);
+	if(!(sum==*(data_buf+num-1)))		return;		//??sum
+	if(!(*(data_buf)==0xAA && *(data_buf+1)==0xAF))		return;		
+	if(*(data_buf+2)==0X10)								//PID1
+	{
+			PID_ROL.P = (float)((vs16)(*(data_buf+4)<<8)|*(data_buf+5))/100;
+			PID_ROL.I = (float)((vs16)(*(data_buf+6)<<8)|*(data_buf+7))/1000;
+			PID_ROL.D = (float)((vs16)(*(data_buf+8)<<8)|*(data_buf+9))/100;
+			PID_PIT.P = (float)((vs16)(*(data_buf+10)<<8)|*(data_buf+11))/100;
+			PID_PIT.I = (float)((vs16)(*(data_buf+12)<<8)|*(data_buf+13))/1000;
+			PID_PIT.D = (float)((vs16)(*(data_buf+14)<<8)|*(data_buf+15))/100;
+			PID_YAW.P = (float)((vs16)(*(data_buf+16)<<8)|*(data_buf+17))/100;
+			PID_YAW.I = (float)((vs16)(*(data_buf+18)<<8)|*(data_buf+19))/100;
+			PID_YAW.D = (float)((vs16)(*(data_buf+20)<<8)|*(data_buf+21))/100;
+//			Data_Send_Check(sum);
+	}
 }
 u8 Nrf_Get_FIFOSta(void)
 {
@@ -156,19 +175,24 @@ void Data_Send_RCData(void)
 }
 void Data_Send_MotoPWM(void)
 {
+	vs16 a,b,c,d;
+	a=Moto_PWM_1-1000;
+	b=Moto_PWM_2-1000;
+	c=Moto_PWM_3-1000;
+	d=Moto_PWM_4-1000;
 	u8 _cnt=0;
 	data_to_send[_cnt++]=0xAA;
 	data_to_send[_cnt++]=0xAA;
 	data_to_send[_cnt++]=0x06;
 	data_to_send[_cnt++]=0;
-	data_to_send[_cnt++]=BYTE1(Moto_PWM_1);
-	data_to_send[_cnt++]=BYTE0(Moto_PWM_1);
-	data_to_send[_cnt++]=BYTE1(Moto_PWM_2);
-	data_to_send[_cnt++]=BYTE0(Moto_PWM_2);
-	data_to_send[_cnt++]=BYTE1(Moto_PWM_3);
-	data_to_send[_cnt++]=BYTE0(Moto_PWM_3);
-	data_to_send[_cnt++]=BYTE1(Moto_PWM_4);
-	data_to_send[_cnt++]=BYTE0(Moto_PWM_4);
+	data_to_send[_cnt++]=BYTE1(a);//((Moto_PWM_1-1000));
+	data_to_send[_cnt++]=BYTE0(a);//((Moto_PWM_1-1000));
+	data_to_send[_cnt++]=BYTE1(b);//((Moto_PWM_2-1000));
+	data_to_send[_cnt++]=BYTE0(b);//((Moto_PWM_2-1000));
+	data_to_send[_cnt++]=BYTE1(c);//((Moto_PWM_3-1000));
+	data_to_send[_cnt++]=BYTE0(c);//((Moto_PWM_3-1000));
+	data_to_send[_cnt++]=BYTE1(d);//((Moto_PWM_4-1000));
+	data_to_send[_cnt++]=BYTE0(d);//((Moto_PWM_4-1000));
 	
 	data_to_send[3] = _cnt-4;
 	
@@ -216,4 +240,22 @@ void Data_Send_VOTAGE(void)
 #else
 	NRF_TxPacket(data_to_send,_cnt);
 #endif
+}
+void Data_Send_Check(u16 check)
+{
+	data_to_send[0]=0xAA;
+	data_to_send[1]=0xAA;
+	data_to_send[2]=0xF0;
+	data_to_send[3]=3;
+	data_to_send[4]=0xBA;
+	
+	data_to_send[5]=BYTE1(check);
+	data_to_send[6]=BYTE0(check);
+	
+	u8 sum = 0;
+	for(u8 i=0;i<7;i++)
+		sum += data_to_send[i];
+	
+	data_to_send[7]=sum;
+	NRF_TxPacket(data_to_send,8);
 }

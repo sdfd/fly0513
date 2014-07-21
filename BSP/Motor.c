@@ -28,8 +28,8 @@ static void PWM_Mode_Init()
 	
 	TIM_TimeBaseInitPWM.TIM_ClockDivision = TIM_CKD_DIV1;
 	TIM_TimeBaseInitPWM.TIM_CounterMode = TIM_CounterMode_Up;
-	TIM_TimeBaseInitPWM.TIM_Period = 40000; //50hz
-	TIM_TimeBaseInitPWM.TIM_Prescaler = 36; //2MÊ±ÖÓ
+	TIM_TimeBaseInitPWM.TIM_Period = 20000; //50hz
+	TIM_TimeBaseInitPWM.TIM_Prescaler = 71; //1MÊ±ÖÓ
 	
 	TIM_TimeBaseInit(TIM3,&TIM_TimeBaseInitPWM);
 	
@@ -62,8 +62,8 @@ void PWM_Change(uint8_t channel,uint16_t CCR_Val)
 {
 	if (CCR_Val>Max_CCR_Val)
 		TIM_OCInitPWM.TIM_Pulse = Max_CCR_Val;
-	else if (CCR_Val<2000)
-		TIM_OCInitPWM.TIM_Pulse = 2000;
+	else if (CCR_Val<Min_CCR_Val)
+		TIM_OCInitPWM.TIM_Pulse = Min_CCR_Val;
 	else
 		TIM_OCInitPWM.TIM_Pulse = CCR_Val;
 	switch (channel)
@@ -87,7 +87,7 @@ void PWM_Init()
 void motor_Init()
 {
 	int val;
-	val = 2000;
+	val = Min_CCR_Val;
 	PWM_Change(1,val);
 	PWM_Change(2,val);
 	PWM_Change(3,val);

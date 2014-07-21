@@ -3,7 +3,7 @@
 
 
 
-#line 1 "E:\\Program files\\keil-arm\\ARM\\ARMCC\\bin\\..\\include\\stdint.h"
+#line 1 "E:\\Program Files\\keil for arm4.7\\ARM\\ARMCC\\bin\\..\\include\\stdint.h"
  
  
 
@@ -22,7 +22,7 @@
 
 
 
-#line 26 "E:\\Program files\\keil-arm\\ARM\\ARMCC\\bin\\..\\include\\stdint.h"
+#line 26 "E:\\Program Files\\keil for arm4.7\\ARM\\ARMCC\\bin\\..\\include\\stdint.h"
 
 
 
@@ -187,7 +187,7 @@ typedef unsigned       __int64 uintmax_t;
 
 
 
-#line 197 "E:\\Program files\\keil-arm\\ARM\\ARMCC\\bin\\..\\include\\stdint.h"
+#line 197 "E:\\Program Files\\keil for arm4.7\\ARM\\ARMCC\\bin\\..\\include\\stdint.h"
 
      
 
@@ -220,7 +220,7 @@ typedef unsigned       __int64 uintmax_t;
 
 
 
-#line 261 "E:\\Program files\\keil-arm\\ARM\\ARMCC\\bin\\..\\include\\stdint.h"
+#line 261 "E:\\Program Files\\keil for arm4.7\\ARM\\ARMCC\\bin\\..\\include\\stdint.h"
 
 
 

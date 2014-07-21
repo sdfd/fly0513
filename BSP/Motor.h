@@ -4,8 +4,8 @@
 #include "stm32f10x.h"
 #include "Time.h"
 
-#define Max_CCR_Val 4000  //1ms-2ms对应定时器的值
-#define Min_CCR_Val 2000
+#define Max_CCR_Val 2000  //1ms-2ms对应定时器的值
+#define Min_CCR_Val 1000
 
 void PWM_Init(void);
 //void PWM_Change(uint8_t channel,uint16_t CCR_Val);

@@ -12,8 +12,8 @@
 #include "IMU.h"
 #include "Tim3.h"
 #include "Data_Transfer.h"
-#define RC_FUN_MIN	2200
-#define RC_FUN_MAX	3600
+#define RC_FUN_MIN	1200
+#define RC_FUN_MAX	1800
 
 typedef struct{
 				float rol;
@@ -48,5 +48,6 @@ extern vs32				Alt;
 extern T_RC_Data 		Rc_D;		//遥控通道数据
 extern T_RC_Control		Rc_C;		//遥控功能数据
 extern u32				Debug_cnt;
-
+extern T_float_angle		Att_Angle_Offset;
+extern	u8 Angle_Offset_Ok;
 #endif

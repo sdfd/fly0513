@@ -3,10 +3,14 @@
 u8 FLAG_ATT=0;
 T_int16_xyz 		Acc,Gyr;	//两次综合后的传感器数据
 T_int16_xyz			Acc_AVG;
-T_float_angle 		Att_Angle;	//ATT函数计算出的姿态角
+T_float_angle 	Att_Angle;	//ATT函数计算出的姿态角
+T_float_angle		Att_Angle_Offset;
+u8 Angle_Offset_Ok = 0;
+
 vs32				Alt;
 T_RC_Data 			Rc_D;		//遥控通道数据
 T_RC_Control		Rc_C;		//遥控功能数据
+
 
 void Sys_Init()
 {
@@ -22,12 +26,12 @@ void Sys_Init()
 	Led_Init();
 	Tim2_Init();
 	DMA_Usart1_Config();
-	PID_ROL.P = 10;
-	PID_ROL.I = 3;
-	PID_ROL.D = 5;	
-	PID_PIT.P = 10;
-	PID_PIT.I = 3;
-	PID_PIT.D = 5;
+	PID_ROL.P = 0;
+	PID_ROL.I = 0;
+	PID_ROL.D = 0;	
+	PID_PIT.P = 3.5;
+	PID_PIT.I = 0;
+	PID_PIT.D = 10;
 	PID_YAW.P = 0;
 	PID_YAW.I = 0;
 	PID_YAW.D = 0;
@@ -44,7 +48,7 @@ int main()
 	time_waitMs(100);
 	while(1)
 	{
-		if(FLAG_ATT)
+		if(FLAG_ATT && Angle_Offset_Ok)
 		{
 			FLAG_ATT = 0;
 			att_cnt++;
@@ -56,7 +60,7 @@ int main()
 				Rc_GetValue(&Rc_D);
 				Rc_Fun(&Rc_D,&Rc_C);
 			}
-			if(att_cnt==1);
+//			if(att_cnt==1);
 //				MPU6050_Dataanl(&mpu6050_dataacc1,&mpu6050_datagyr1);
 			else
 			{

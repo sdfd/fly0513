@@ -145,23 +145,69 @@ void SysTick_Handler(void)
 /*  available peripheral interrupt handler's name please refer to the startup */
 /*  file (startup_stm32f10x_xx.s).                                            */
 /******************************************************************************/
+static u8 RxState = 0;
+static u8 RxBuffer[50];
 
-void USART1_IRQHandler(void)
+void USART2_IRQHandler(void)
 {
-	u8 c;
-	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
-	{ 	
-	    c=USART1->DR;
-	  	printf("%c",c);    //将接受到的数据直接返回打印
-	} 
-	 
+	if (USART_GetFlagStatus(USART2, USART_FLAG_ORE) != RESET)//??!????if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)???
+    {
+        USART_ReceiveData(USART2);
+    }
+		
+ 
+	if(USART2->SR & (1<<5))//if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)    
+	{
+		u8 com_data = USART2->DR;
+		static u8 _data_len = 0,_data_cnt = 0;
+		if(RxState==0&&com_data==0xAA)
+		{
+			RxState=1;
+			RxBuffer[0]=com_data;
+		}
+		else if(RxState==1&&com_data==0xAF)
+		{
+			RxState=2;
+			RxBuffer[1]=com_data;
+		}
+		else if(RxState==2&&com_data>0&&com_data<0X10)
+		{
+			RxState=3;
+			RxBuffer[2]=com_data;
+		}
+		else if(RxState==3&&com_data<50)
+		{
+			RxState = 4;
+			RxBuffer[3]=com_data;
+			_data_len = com_data;
+			_data_cnt = 0;
+		}
+		else if(RxState==4&&_data_len>0)
+		{
+			_data_len--;
+			RxBuffer[4+_data_cnt++]=com_data;
+			if(_data_len==0)
+				RxState = 5;
+		}
+		else if(RxState==5)
+		{
+			RxState = 0;
+			RxBuffer[4+_data_cnt]=com_data;
+			Data_Receive_Anl(RxBuffer,_data_cnt+5);
+		}
+		else
+			RxState = 0;
+	}	 
 }
+
+
 void DMA1_Channel5_IRQHandler(void)
 {	
 	uint16_t i,j;
 	uint8_t sum=0;
 	uint32_t now_time;
 	T_float_angle Pre_Angle;
+	static u16 count=0;
 //判断是否为DMA发送完成中断
 //	printf("123\n");
 	DMA_ITConfig(DMA1_Channel5,DMA_IT_TC,DISABLE);
@@ -192,6 +238,27 @@ void DMA1_Channel5_IRQHandler(void)
 					Gyr.Y=((float)(Att_Angle.rol-Pre_Angle.rol)/(float)Dlt_Tim);
 					Gyr.X=((float)(Att_Angle.pit-Pre_Angle.pit)/(float)Dlt_Tim);
 					Gyr.Z=((float)(Att_Angle.yaw-Pre_Angle.yaw)/(float)Dlt_Tim);
+					if (count <200)
+					{
+						count++;
+						Att_Angle_Offset.pit += Att_Angle.pit;
+						Att_Angle_Offset.rol += Att_Angle.rol;
+						Att_Angle_Offset.yaw += Att_Angle.yaw;
+					}
+					else if (count == 200)
+					{
+						Att_Angle_Offset.pit /= count;
+						Att_Angle_Offset.rol /= count;
+						Att_Angle_Offset.yaw /= count;
+						Angle_Offset_Ok = 1;
+						count++;
+					}
+					if(Angle_Offset_Ok)
+					{
+						Att_Angle.pit -= Att_Angle_Offset.pit;
+						Att_Angle.rol -= Att_Angle_Offset.rol;
+						Att_Angle.yaw -= Att_Angle_Offset.yaw;
+					}
 					goto L1;
 				}
 			}

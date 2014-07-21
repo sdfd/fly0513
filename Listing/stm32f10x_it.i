@@ -372,7 +372,7 @@ typedef enum IRQn
 
 
 
-#line 1 "E:\\Program files\\keil-arm\\ARM\\ARMCC\\bin\\..\\include\\stdint.h"
+#line 1 "E:\\Program Files\\keil for arm4.7\\ARM\\ARMCC\\bin\\..\\include\\stdint.h"
  
  
 
@@ -391,7 +391,7 @@ typedef enum IRQn
 
 
 
-#line 26 "E:\\Program files\\keil-arm\\ARM\\ARMCC\\bin\\..\\include\\stdint.h"
+#line 26 "E:\\Program Files\\keil for arm4.7\\ARM\\ARMCC\\bin\\..\\include\\stdint.h"
 
 
 
@@ -556,7 +556,7 @@ typedef unsigned       __int64 uintmax_t;
 
 
 
-#line 197 "E:\\Program files\\keil-arm\\ARM\\ARMCC\\bin\\..\\include\\stdint.h"
+#line 197 "E:\\Program Files\\keil for arm4.7\\ARM\\ARMCC\\bin\\..\\include\\stdint.h"
 
      
 
@@ -589,7 +589,7 @@ typedef unsigned       __int64 uintmax_t;
 
 
 
-#line 261 "E:\\Program files\\keil-arm\\ARM\\ARMCC\\bin\\..\\include\\stdint.h"
+#line 261 "E:\\Program Files\\keil for arm4.7\\ARM\\ARMCC\\bin\\..\\include\\stdint.h"
 
 
 
@@ -10049,7 +10049,7 @@ void SysTick_Handler(void);
 
 
 #line 5 "..\\BSP\\USART1.h"
-#line 1 "E:\\Program files\\keil-arm\\ARM\\ARMCC\\bin\\..\\include\\stdio.h"
+#line 1 "E:\\Program Files\\keil for arm4.7\\ARM\\ARMCC\\bin\\..\\include\\stdio.h"
  
  
  
@@ -10079,7 +10079,7 @@ void SysTick_Handler(void);
 
 
 
-#line 38 "E:\\Program files\\keil-arm\\ARM\\ARMCC\\bin\\..\\include\\stdio.h"
+#line 38 "E:\\Program Files\\keil for arm4.7\\ARM\\ARMCC\\bin\\..\\include\\stdio.h"
 
 
   
@@ -10146,7 +10146,7 @@ typedef struct __FILE FILE;
 extern FILE __stdin, __stdout, __stderr;
 extern FILE *__aeabi_stdin, *__aeabi_stdout, *__aeabi_stderr;
 
-#line 129 "E:\\Program files\\keil-arm\\ARM\\ARMCC\\bin\\..\\include\\stdio.h"
+#line 129 "E:\\Program Files\\keil for arm4.7\\ARM\\ARMCC\\bin\\..\\include\\stdio.h"
     
 
     
@@ -10895,7 +10895,7 @@ extern __declspec(__nothrow) void __use_no_semihosting(void);
 
 
 
-#line 948 "E:\\Program files\\keil-arm\\ARM\\ARMCC\\bin\\..\\include\\stdio.h"
+#line 948 "E:\\Program Files\\keil for arm4.7\\ARM\\ARMCC\\bin\\..\\include\\stdio.h"
 
 
 
