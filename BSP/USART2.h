@@ -11,6 +11,6 @@ void USART2_Config(void);
 //int fputc(int ch, FILE *f);
 void USART2_printf(USART_TypeDef* USARTx, uint8_t *Data,...);
 void DMA_Config(void);
-extern uint8_t ReadBuffer[];
+extern u8 ReadBuffer[];
 
 #endif /* __USART2_H */

@@ -522,6 +522,11 @@
               <FileType>1</FileType>
               <FilePath>..\BSP\ADC.c</FilePath>
             </File>
+            <File>
+              <FileName>USART2.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\BSP\USART2.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

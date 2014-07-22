@@ -3,6 +3,7 @@
 
 #include "stm32f10x.h"
 #include "USART1.h"
+#include "USART2.h"
 #include "SPI1.h"
 #include "Led.h"
 #include "Motor.h"

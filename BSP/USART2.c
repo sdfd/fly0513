@@ -19,7 +19,7 @@
 #include <stdarg.h>
 #include "misc.h"
 
-uint8_t ReadBuffer[READBUFF_SIZE];
+//uint8_t ReadBuffer[READBUFF_SIZE];
 /*
  * 函数名：USART2_Config
  * 描述  ：USART2 GPIO 配置,工作模式配置
