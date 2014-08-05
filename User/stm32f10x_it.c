@@ -145,9 +145,110 @@ void SysTick_Handler(void)
 /*  available peripheral interrupt handler's name please refer to the startup */
 /*  file (startup_stm32f10x_xx.s).                                            */
 /******************************************************************************/
+static u8 RxState1 = 0;
+static u8 RxBuffer1[50];
+void USART1_IRQHandler(void)
+{
+	uint8_t sum=0,j=0;
+	uint32_t now_time;
+	T_float_angle Pre_Angle;
+	static u16 count1=0;
+	now_time = time_nowMs();
+	Dlt_Tim = now_time - Pre_Tim;
+	Pre_Tim = now_time;
+	Pre_Angle=Att_Angle;
+	if (USART_GetFlagStatus(USART1, USART_FLAG_ORE) != RESET)//??!????if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)???
+    {
+        USART_ReceiveData(USART1);
+    }
+		
+	//if((USART1->SR & (1<<7))&&(USART1->CR1 & USART_CR1_TXEIE))//if(USART_GetITStatus(USART1,USART_IT_TXE)!=RESET)
+	//{
+//		USART1->DR = TxBuffer[TxCounter++]; //写DR清除中断标志          
+//		if(TxCounter == count)
+//		{
+//			USART1->CR1 &= ~USART_CR1_TXEIE;		//关闭TXE中断
+			//USART_ITConfig(USART1,USART_IT_TXE,DISABLE);
+//		}
+//	}
+	if(USART1->SR & (1<<5))//if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)    
+	{
+		u8 com_data = USART1->DR;
+		static u8 _data_len = 0,_data_cnt = 0;
+		if(RxState1==0&&com_data==0x55)
+		{
+			RxState1=1;
+			RxBuffer1[0]=com_data;
+		}
+		else if(RxState1==1&&com_data==0x53)
+		{
+			RxState1=2;
+			RxBuffer1[1]=com_data;
+			_data_len = 8;
+			_data_cnt = 0;
+		}
+		else if(RxState1==2&&_data_len>0)
+		{
+			_data_len--;
+			RxBuffer1[2+_data_cnt++]=com_data;
+			if(_data_len==0)
+				RxState1 = 3;
+		}
+		else if(RxState1==3)
+		{
+			RxState1 = 0;
+			RxBuffer1[2+_data_cnt]=com_data;
+			for(j=0;j<10;j++)
+				{
+					sum += RxBuffer1[j];
+//					printf("%X ",ReadBuffer[i+j]);
+				}
+//				printf("%X ",ReadBuffer[i+j+1]);
+//				printf("%d\n",sum);
+				if(RxBuffer1[10]==sum)
+				{
+					Att_Angle.rol=((int16_t)((RxBuffer1[3]<<8)|RxBuffer1[2]))/32768.0*180;
+					Att_Angle.pit=((int16_t)((RxBuffer1[5]<<8)|RxBuffer1[4]))/32768.0*180;
+					Att_Angle.yaw=((int16_t)((RxBuffer1[7]<<8)|RxBuffer1[6]))/32768.0*180;
+//					printf("Roll=%4.3f,Pitch=%4.3f,Yaw=%4.3f\n",Roll,Pitch,Yaw);
+//					Gyr.Y=((float)(Att_Angle.rol-Pre_Angle.rol)/(float)Dlt_Tim);
+//					Gyr.X=((float)(Att_Angle.pit-Pre_Angle.pit)/(float)Dlt_Tim);
+//					Gyr.Z=((float)(Att_Angle.yaw-Pre_Angle.yaw)/(float)Dlt_Tim);
+					Gyr.Y=((float)(Pre_Angle.rol-Att_Angle.rol)/(float)Dlt_Tim);
+					Gyr.X=((float)(Pre_Angle.pit-Att_Angle.pit)/(float)Dlt_Tim);
+					Gyr.Z=((float)(Pre_Angle.yaw-Att_Angle.yaw)/(float)Dlt_Tim);
+					if (count1 <200)
+					{
+						count1++;
+						Att_Angle_Offset.pit += Att_Angle.pit;
+						Att_Angle_Offset.rol += Att_Angle.rol;
+						Att_Angle_Offset.yaw += Att_Angle.yaw;
+					}
+					else if (count1 == 200)
+					{
+						Att_Angle_Offset.pit /= count1;
+						Att_Angle_Offset.rol /= count1;
+						Att_Angle_Offset.yaw /= count1;
+						Angle_Offset_Ok = 1;
+						count1++;
+					}
+					if(Angle_Offset_Ok)
+					{
+						Att_Angle.pit -= Att_Angle_Offset.pit;
+						Att_Angle.rol -= Att_Angle_Offset.rol;
+						Att_Angle.yaw -= Att_Angle_Offset.yaw;
+					}
+			}
+			else
+				RxState1 = 0;
+		}	 
+	}
+}
 static u8 RxState = 0;
 static u8 RxBuffer[50];
-
+extern u8 TxCounter;
+extern u8 TxBuffer[];
+extern u8 count;
 void USART2_IRQHandler(void)
 {
 	if (USART_GetFlagStatus(USART2, USART_FLAG_ORE) != RESET)//??!????if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)???
@@ -155,7 +256,15 @@ void USART2_IRQHandler(void)
         USART_ReceiveData(USART2);
     }
 		
- 
+	if((USART2->SR & (1<<7))&&(USART2->CR1 & USART_CR1_TXEIE))//if(USART_GetITStatus(USART1,USART_IT_TXE)!=RESET)
+	{
+		USART2->DR = TxBuffer[TxCounter++]; //写DR清除中断标志          
+		if(TxCounter == count)
+		{
+			USART2->CR1 &= ~USART_CR1_TXEIE;		//关闭TXE中断
+			//USART_ITConfig(USART1,USART_IT_TXE,DISABLE);
+		}
+	}
 	if(USART2->SR & (1<<5))//if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)    
 	{
 		u8 com_data = USART2->DR;
@@ -170,7 +279,7 @@ void USART2_IRQHandler(void)
 			RxState=2;
 			RxBuffer[1]=com_data;
 		}
-		else if(RxState==2&&com_data>0&&com_data<0X10)
+		else if(RxState==2&&com_data>0&&com_data<=0X10)
 		{
 			RxState=3;
 			RxBuffer[2]=com_data;
@@ -235,9 +344,12 @@ void DMA1_Channel5_IRQHandler(void)
 					Att_Angle.pit=((int16_t)((ReadBuffer[i+5]<<8)|ReadBuffer[i+4]))/32768.0*180;
 					Att_Angle.yaw=((int16_t)((ReadBuffer[i+7]<<8)|ReadBuffer[i+6]))/32768.0*180;
 //					printf("Roll=%4.3f,Pitch=%4.3f,Yaw=%4.3f\n",Roll,Pitch,Yaw);
-					Gyr.Y=((float)(Att_Angle.rol-Pre_Angle.rol)/(float)Dlt_Tim);
-					Gyr.X=((float)(Att_Angle.pit-Pre_Angle.pit)/(float)Dlt_Tim);
-					Gyr.Z=((float)(Att_Angle.yaw-Pre_Angle.yaw)/(float)Dlt_Tim);
+//					Gyr.Y=((float)(Att_Angle.rol-Pre_Angle.rol)/(float)Dlt_Tim);
+//					Gyr.X=((float)(Att_Angle.pit-Pre_Angle.pit)/(float)Dlt_Tim);
+//					Gyr.Z=((float)(Att_Angle.yaw-Pre_Angle.yaw)/(float)Dlt_Tim);
+					Gyr.Y=((float)(Pre_Angle.rol-Att_Angle.rol)/(float)Dlt_Tim);
+					Gyr.X=((float)(Pre_Angle.pit-Att_Angle.pit)/(float)Dlt_Tim);
+					Gyr.Z=((float)(Pre_Angle.yaw-Att_Angle.yaw)/(float)Dlt_Tim);
 					if (count <200)
 					{
 						count++;

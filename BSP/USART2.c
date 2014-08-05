@@ -57,6 +57,7 @@ void USART2_Config(void)
 	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
 
 	USART_Init(USART2, &USART_InitStructure); 
+	USART_ITConfig(USART2, USART_IT_RXNE, ENABLE);
 	USART_Cmd(USART2, ENABLE);
 }
 
@@ -293,3 +294,13 @@ void DMA_Config(void)
 }
 
 /******************* (C) COPYRIGHT 2012 WildFire Team *****END OF FILE************/
+u8 TxBuffer[256];
+u8 TxCounter=0;
+u8 count=0;
+void Uart2_Put_Buf(unsigned char *DataToSend , u8 data_num)
+{
+	for(u8 i=0;i<data_num;i++)
+		TxBuffer[count++] = *(DataToSend+i);
+	if(!(USART2->CR1 & USART_CR1_TXEIE))
+		USART_ITConfig(USART2, USART_IT_TXE, ENABLE); 
+}

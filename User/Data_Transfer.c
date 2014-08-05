@@ -65,7 +65,7 @@ void Data_Receive_Anl(u8 *data_buf,u8 num)
 			PID_YAW.P = (float)((vs16)(*(data_buf+16)<<8)|*(data_buf+17))/100;
 			PID_YAW.I = (float)((vs16)(*(data_buf+18)<<8)|*(data_buf+19))/100;
 			PID_YAW.D = (float)((vs16)(*(data_buf+20)<<8)|*(data_buf+21))/100;
-//			Data_Send_Check(sum);
+			Data_Send_Check(sum);
 	}
 }
 u8 Nrf_Get_FIFOSta(void)
@@ -257,5 +257,15 @@ void Data_Send_Check(u16 check)
 		sum += data_to_send[i];
 	
 	data_to_send[7]=sum;
-	NRF_TxPacket(data_to_send,8);
+	data_to_send[8]=PID_PIT.P;
+	data_to_send[9]=PID_PIT.I;
+	data_to_send[10]=PID_PIT.D;
+	data_to_send[11]=PID_ROL.P;
+	data_to_send[12]=PID_ROL.I;
+	data_to_send[13]=PID_ROL.D;
+	data_to_send[14]=PID_YAW.P;
+	data_to_send[15]=PID_YAW.I;
+	data_to_send[16]=PID_YAW.D;
+//	NRF_TxPacket(data_to_send,8);
+	Uart2_Put_Buf(data_to_send,17);
 }

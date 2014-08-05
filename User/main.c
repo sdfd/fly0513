@@ -25,7 +25,7 @@ void Sys_Init()
 	IMU_Init();
 	Led_Init();
 	Tim2_Init();
-	DMA_Usart1_Config();
+//	DMA_Usart1_Config();
 	USART2_Config();
 	PID_ROL.P = 0;
 	PID_ROL.I = 0;

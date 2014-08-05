@@ -12,5 +12,5 @@ void USART2_Config(void);
 void USART2_printf(USART_TypeDef* USARTx, uint8_t *Data,...);
 void DMA_Config(void);
 extern u8 ReadBuffer[];
-
+void Uart2_Put_Buf(unsigned char *DataToSend , u8 data_num);
 #endif /* __USART2_H */

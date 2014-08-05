@@ -11,7 +11,7 @@ void Control(T_float_angle *att_in,T_int16_xyz *gyr_in, T_RC_Data *rc_in, u8 arm
 {
 	T_float_angle angle;
 	angle.rol = att_in->rol - (rc_in->ROLL-1500)/20;
-	angle.pit = att_in->pit - (rc_in->PITCH-1500)/20;
+	angle.pit = att_in->pit ;//- (rc_in->PITCH-1500)/20;
 	
 	rol_i += angle.rol;
 	if(rol_i>2000)
