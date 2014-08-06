@@ -153,10 +153,7 @@ void USART1_IRQHandler(void)
 	uint32_t now_time;
 	T_float_angle Pre_Angle;
 	static u16 count1=0;
-	now_time = time_nowMs();
-	Dlt_Tim = now_time - Pre_Tim;
-	Pre_Tim = now_time;
-	Pre_Angle=Att_Angle;
+	
 	if (USART_GetFlagStatus(USART1, USART_FLAG_ORE) != RESET)//??!????if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)???
     {
         USART_ReceiveData(USART1);
@@ -207,6 +204,10 @@ void USART1_IRQHandler(void)
 //				printf("%d\n",sum);
 				if(RxBuffer1[10]==sum)
 				{
+					now_time = time_nowMs();
+					Dlt_Tim = now_time - Pre_Tim;
+					Pre_Tim = now_time;
+					Pre_Angle=Att_Angle;
 					Att_Angle.rol=((int16_t)((RxBuffer1[3]<<8)|RxBuffer1[2]))/32768.0*180;
 					Att_Angle.pit=((int16_t)((RxBuffer1[5]<<8)|RxBuffer1[4]))/32768.0*180;
 					Att_Angle.yaw=((int16_t)((RxBuffer1[7]<<8)|RxBuffer1[6]))/32768.0*180;

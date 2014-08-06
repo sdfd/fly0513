@@ -5,6 +5,7 @@
 #define BYTE2(dwTemp)       (*((char *)(&dwTemp) + 2))
 #define BYTE3(dwTemp)       (*((char *)(&dwTemp) + 3))
 #define DATA_TRANSFER_USE_SPI_NRF
+//#define DATA_TRANSFER_USE_USART
 u8 Data_Check,Send_Status,Send_Senser,Send_RCData,Send_Offset,Send_PID1,Send_PID2,Send_PID3,Send_PID4,Send_PID5,Send_PID6,Send_MotoPwm;
 u8 data_to_send[50];
 void Nrf_Check_Event(void)
@@ -133,7 +134,7 @@ void Data_Send_Status(void)
 		sum += data_to_send[i];
 	data_to_send[_cnt++]=sum;
 #ifdef DATA_TRANSFER_USE_USART
-	Uart1_Put_Buf(data_to_send,_cnt);
+	Uart2_Put_Buf(data_to_send,_cnt);
 #else
 	NRF_TxPacket(data_to_send,_cnt);
 #endif
@@ -168,7 +169,7 @@ void Data_Send_RCData(void)
 	data_to_send[_cnt++]=sum;
 	
 #ifdef DATA_TRANSFER_USE_USART
-	Uart1_Put_Buf(data_to_send,_cnt);
+	Uart2_Put_Buf(data_to_send,_cnt);
 #else
 	NRF_TxPacket(data_to_send,_cnt);
 #endif
@@ -203,7 +204,7 @@ void Data_Send_MotoPWM(void)
 	data_to_send[_cnt++]=sum;
 	
 #ifdef DATA_TRANSFER_USE_USART
-	Uart1_Put_Buf(data_to_send,_cnt);
+	Uart2_Put_Buf(data_to_send,_cnt);
 #else
 	NRF_TxPacket(data_to_send,_cnt);
 #endif
@@ -236,7 +237,7 @@ void Data_Send_VOTAGE(void)
 	data_to_send[_cnt++]=sum;
 	
 #ifdef DATA_TRANSFER_USE_USART
-	Uart1_Put_Buf(data_to_send,_cnt);
+	Uart2_Put_Buf(data_to_send,_cnt);
 #else
 	NRF_TxPacket(data_to_send,_cnt);
 #endif

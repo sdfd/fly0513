@@ -39,7 +39,7 @@ I (..\BSP\USART2.h)(0x53DF8766)
 I (..\BSP\SPI1.h)(0x53B8E58A)
 I (..\BSP\Led.h)(0x53A154C0)
 I (..\BSP\Time.h)(0x53731ECE)
-I (..\BSP\Motor.h)(0x53C00FAB)
+I (..\BSP\Motor.h)(0x53E1C9A2)
 I (..\BSP\NRF24L.h)(0x53A146CE)
 I (..\BSP\ADC.h)(0x539F0840)
 I (..\User\IMU.h)(0x539F0840)
@@ -49,7 +49,7 @@ I (..\BSP\Tim_PWM_In.h)(0x5374702E)
 I (..\User\Rc.h)(0x5380A392)
 I (..\User\Control.h)(0x53832C06)
 F (..\User\stm32f10x_conf.h)(0x53ABCD84)()
-F (..\User\stm32f10x_it.c)(0x53E0782A)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\BSP -I..\CMSIS -I..\Lib\inc -I..\User --C99-I "E:\Program Files\keil_ARM_5.11\ARM\RV31\INC"-I "E:\Program Files\keil_ARM_5.11\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include"-I "E:\Program Files\keil_ARM_5.11\ARM\Inc\ST\STM32F10x"-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\stm32f10x_it.o --omf_browse ..\output\stm32f10x_it.crf --depend ..\output\stm32f10x_it.d)
+F (..\User\stm32f10x_it.c)(0x53E1CCF8)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\BSP -I..\CMSIS -I..\Lib\inc -I..\User --C99-I "E:\Program Files\keil_ARM_5.11\ARM\RV31\INC"-I "E:\Program Files\keil_ARM_5.11\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include"-I "E:\Program Files\keil_ARM_5.11\ARM\Inc\ST\STM32F10x"-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\stm32f10x_it.o --omf_browse ..\output\stm32f10x_it.crf --depend ..\output\stm32f10x_it.d)
 I (..\User\stm32f10x_it.h)(0x4D99A59E)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
 I (..\CMSIS\core_cm3.h)(0x4D523B58)
@@ -72,7 +72,7 @@ I (..\BSP\USART2.h)(0x53DF8766)
 I (..\BSP\SPI1.h)(0x53B8E58A)
 I (..\BSP\Led.h)(0x53A154C0)
 I (..\BSP\Time.h)(0x53731ECE)
-I (..\BSP\Motor.h)(0x53C00FAB)
+I (..\BSP\Motor.h)(0x53E1C9A2)
 I (..\BSP\NRF24L.h)(0x53A146CE)
 I (..\BSP\ADC.h)(0x539F0840)
 I (..\User\IMU.h)(0x539F0840)
@@ -105,7 +105,7 @@ I (..\BSP\USART2.h)(0x53DF8766)
 I (..\BSP\SPI1.h)(0x53B8E58A)
 I (..\BSP\Led.h)(0x53A154C0)
 I (..\BSP\Time.h)(0x53731ECE)
-I (..\BSP\Motor.h)(0x53C00FAB)
+I (..\BSP\Motor.h)(0x53E1C9A2)
 I (..\BSP\NRF24L.h)(0x53A146CE)
 I (..\BSP\ADC.h)(0x539F0840)
 I (..\User\IMU.h)(0x539F0840)
@@ -113,7 +113,7 @@ I (..\BSP\Tim3.h)(0x53ACE686)
 I (..\User\Data_Transfer.h)(0x53ABCB44)
 I (..\BSP\Tim_PWM_In.h)(0x5374702E)
 I (..\User\Control.h)(0x53832C06)
-F (..\User\Control.c)(0x53E06B7B)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\BSP -I..\CMSIS -I..\Lib\inc -I..\User --C99-I "E:\Program Files\keil_ARM_5.11\ARM\RV31\INC"-I "E:\Program Files\keil_ARM_5.11\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include"-I "E:\Program Files\keil_ARM_5.11\ARM\Inc\ST\STM32F10x"-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\control.o --omf_browse ..\output\control.crf --depend ..\output\control.d)
+F (..\User\Control.c)(0x53E205E6)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\BSP -I..\CMSIS -I..\Lib\inc -I..\User --C99-I "E:\Program Files\keil_ARM_5.11\ARM\RV31\INC"-I "E:\Program Files\keil_ARM_5.11\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include"-I "E:\Program Files\keil_ARM_5.11\ARM\Inc\ST\STM32F10x"-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\control.o --omf_browse ..\output\control.crf --depend ..\output\control.d)
 I (..\User\Control.h)(0x53832C06)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
 I (..\CMSIS\core_cm3.h)(0x4D523B58)
@@ -136,7 +136,7 @@ I (..\BSP\USART2.h)(0x53DF8766)
 I (..\BSP\SPI1.h)(0x53B8E58A)
 I (..\BSP\Led.h)(0x53A154C0)
 I (..\BSP\Time.h)(0x53731ECE)
-I (..\BSP\Motor.h)(0x53C00FAB)
+I (..\BSP\Motor.h)(0x53E1C9A2)
 I (..\BSP\NRF24L.h)(0x53A146CE)
 I (..\BSP\ADC.h)(0x539F0840)
 I (..\User\IMU.h)(0x539F0840)
@@ -144,6 +144,7 @@ I (..\BSP\Tim3.h)(0x53ACE686)
 I (..\User\Data_Transfer.h)(0x53ABCB44)
 I (..\BSP\Tim_PWM_In.h)(0x5374702E)
 I (..\User\Rc.h)(0x5380A392)
+I (E:\Program Files\keil_ARM_5.11\ARM\ARMCC\include\math.h)(0x53463A44)
 F (..\User\IMU.c)(0x53AD2516)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\BSP -I..\CMSIS -I..\Lib\inc -I..\User --C99-I "E:\Program Files\keil_ARM_5.11\ARM\RV31\INC"-I "E:\Program Files\keil_ARM_5.11\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include"-I "E:\Program Files\keil_ARM_5.11\ARM\Inc\ST\STM32F10x"-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\imu.o --omf_browse ..\output\imu.crf --depend ..\output\imu.d)
 I (..\User\IMU.h)(0x539F0840)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
@@ -163,7 +164,7 @@ I (..\Lib\inc\misc.h)(0x4D783BB4)
 I (..\BSP\USART1.h)(0x53731A82)
 I (E:\Program Files\keil_ARM_5.11\ARM\ARMCC\include\stdio.h)(0x53463A44)
 I (..\BSP\time.h)(0x53731ECE)
-F (..\User\Data_Transfer.c)(0x53E04B2C)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\BSP -I..\CMSIS -I..\Lib\inc -I..\User --C99-I "E:\Program Files\keil_ARM_5.11\ARM\RV31\INC"-I "E:\Program Files\keil_ARM_5.11\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include"-I "E:\Program Files\keil_ARM_5.11\ARM\Inc\ST\STM32F10x"-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\data_transfer.o --omf_browse ..\output\data_transfer.crf --depend ..\output\data_transfer.d)
+F (..\User\Data_Transfer.c)(0x53E0DD08)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\BSP -I..\CMSIS -I..\Lib\inc -I..\User --C99-I "E:\Program Files\keil_ARM_5.11\ARM\RV31\INC"-I "E:\Program Files\keil_ARM_5.11\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include"-I "E:\Program Files\keil_ARM_5.11\ARM\Inc\ST\STM32F10x"-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\data_transfer.o --omf_browse ..\output\data_transfer.crf --depend ..\output\data_transfer.d)
 I (..\User\Data_Transfer.h)(0x53ABCB44)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
 I (..\CMSIS\core_cm3.h)(0x4D523B58)
@@ -186,7 +187,7 @@ I (..\BSP\USART2.h)(0x53DF8766)
 I (..\BSP\SPI1.h)(0x53B8E58A)
 I (..\BSP\Led.h)(0x53A154C0)
 I (..\BSP\Time.h)(0x53731ECE)
-I (..\BSP\Motor.h)(0x53C00FAB)
+I (..\BSP\Motor.h)(0x53E1C9A2)
 I (..\BSP\NRF24L.h)(0x53A146CE)
 I (..\BSP\ADC.h)(0x539F0840)
 I (..\User\IMU.h)(0x539F0840)
@@ -265,7 +266,7 @@ I (..\BSP\USART1.h)(0x53731A82)
 I (E:\Program Files\keil_ARM_5.11\ARM\ARMCC\include\stdio.h)(0x53463A44)
 I (..\BSP\USART2.h)(0x53DF8766)
 I (..\BSP\SPI1.h)(0x53B8E58A)
-I (..\BSP\Motor.h)(0x53C00FAB)
+I (..\BSP\Motor.h)(0x53E1C9A2)
 I (..\BSP\NRF24L.h)(0x53A146CE)
 I (..\BSP\ADC.h)(0x539F0840)
 I (..\User\IMU.h)(0x539F0840)
@@ -274,8 +275,8 @@ I (..\User\Data_Transfer.h)(0x53ABCB44)
 I (..\BSP\Tim_PWM_In.h)(0x5374702E)
 I (..\User\Rc.h)(0x5380A392)
 I (..\User\Control.h)(0x53832C06)
-F (..\BSP\Motor.c)(0x53C00FEA)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\BSP -I..\CMSIS -I..\Lib\inc -I..\User --C99-I "E:\Program Files\keil_ARM_5.11\ARM\RV31\INC"-I "E:\Program Files\keil_ARM_5.11\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include"-I "E:\Program Files\keil_ARM_5.11\ARM\Inc\ST\STM32F10x"-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\motor.o --omf_browse ..\output\motor.crf --depend ..\output\motor.d)
-I (..\BSP\Motor.h)(0x53C00FAB)
+F (..\BSP\Motor.c)(0x53E1CA1F)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\BSP -I..\CMSIS -I..\Lib\inc -I..\User --C99-I "E:\Program Files\keil_ARM_5.11\ARM\RV31\INC"-I "E:\Program Files\keil_ARM_5.11\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include"-I "E:\Program Files\keil_ARM_5.11\ARM\Inc\ST\STM32F10x"-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\motor.o --omf_browse ..\output\motor.crf --depend ..\output\motor.d)
+I (..\BSP\Motor.h)(0x53E1C9A2)
 I (..\CMSIS\stm32f10x.h)(0x4D783CB4)
 I (..\CMSIS\core_cm3.h)(0x4D523B58)
 I (E:\Program Files\keil_ARM_5.11\ARM\ARMCC\include\stdint.h)(0x53463A44)
@@ -291,6 +292,20 @@ I (..\Lib\inc\stm32f10x_tim.h)(0x4D783BB4)
 I (..\Lib\inc\stm32f10x_usart.h)(0x4D783BB4)
 I (..\Lib\inc\misc.h)(0x4D783BB4)
 I (..\BSP\Time.h)(0x53731ECE)
+I (..\User\main.h)(0x53CE906C)
+I (..\BSP\USART1.h)(0x53731A82)
+I (E:\Program Files\keil_ARM_5.11\ARM\ARMCC\include\stdio.h)(0x53463A44)
+I (..\BSP\USART2.h)(0x53DF8766)
+I (..\BSP\SPI1.h)(0x53B8E58A)
+I (..\BSP\Led.h)(0x53A154C0)
+I (..\BSP\NRF24L.h)(0x53A146CE)
+I (..\BSP\ADC.h)(0x539F0840)
+I (..\User\IMU.h)(0x539F0840)
+I (..\BSP\Tim3.h)(0x53ACE686)
+I (..\User\Data_Transfer.h)(0x53ABCB44)
+I (..\BSP\Tim_PWM_In.h)(0x5374702E)
+I (..\User\Rc.h)(0x5380A392)
+I (..\User\Control.h)(0x53832C06)
 F (..\BSP\Time.c)(0x539F13E6)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\BSP -I..\CMSIS -I..\Lib\inc -I..\User --C99-I "E:\Program Files\keil_ARM_5.11\ARM\RV31\INC"-I "E:\Program Files\keil_ARM_5.11\ARM\PACK\ARM\CMSIS\4.1.0\CMSIS\Include"-I "E:\Program Files\keil_ARM_5.11\ARM\Inc\ST\STM32F10x"-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_HD-o ..\output\time.o --omf_browse ..\output\time.crf --depend ..\output\time.d)
 I (..\BSP\Time.h)(0x53731ECE)
 I (E:\Program Files\keil_ARM_5.11\ARM\ARMCC\include\stdint.h)(0x53463A44)
@@ -330,7 +345,7 @@ I (..\BSP\USART2.h)(0x53DF8766)
 I (..\BSP\SPI1.h)(0x53B8E58A)
 I (..\BSP\Led.h)(0x53A154C0)
 I (..\BSP\Time.h)(0x53731ECE)
-I (..\BSP\Motor.h)(0x53C00FAB)
+I (..\BSP\Motor.h)(0x53E1C9A2)
 I (..\BSP\NRF24L.h)(0x53A146CE)
 I (..\BSP\ADC.h)(0x539F0840)
 I (..\User\IMU.h)(0x539F0840)

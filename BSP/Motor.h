@@ -3,6 +3,7 @@
 
 #include "stm32f10x.h"
 #include "Time.h"
+#include "main.h"
 
 #define Max_CCR_Val 2000  //1ms-2ms对应定时器的值
 #define Min_CCR_Val 1000
